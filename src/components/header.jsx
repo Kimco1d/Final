@@ -1,12 +1,12 @@
-import { GiCrossedChains } from "react-icons/gi";
-import { MdOutlineWallet } from "react-icons/md";
-import { BsCheck2All } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { MdInvertColors } from "react-icons/md";
+import { FaGoogleWallet } from "react-icons/fa";
+import { AiOutlineCheck } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Header = ({ account, setAccount }) => {
-  const [coinPrice, setCoinPrice] = useState();
+  const [coinPrice, setCoinPrice] = useState("");
   const getCoinPrice = async () => {
     try {
       const response = await axios.get(
@@ -42,8 +42,8 @@ const Header = ({ account, setAccount }) => {
     <header className="max-w-screen-xl mx-auto p-4 flex justify-between items-center font-bold">
       <Link to="/">
         <div className="flex items-center text-main">
-          <GiCrossedChains size={28} />
-          <div className="ml-1 text-xl">BCS</div>
+          <MdInvertColors size={28} />
+          <div>Color-Chip</div>
         </div>
       </Link>
       <div className="flex items-center">
@@ -52,16 +52,16 @@ const Header = ({ account, setAccount }) => {
             {coinPrice.map((v, i) => {
               return (
                 <li key={i} className="ml-2">
-                  {v.symbol}: {(v.price / 1000).toLocaleString()}K₩
+                  {setAccount.symbol}: {(v.price / 1000).toLocaleString()}k₩
                 </li>
               );
             })}
           </ul>
         )}
         {account ? (
-          <div className="flex items-center p-2 bg-gray-800 rounded-full ml-4">
+          <div className="flex items-center p-2 bg-slate-800 rounded-full ml-4">
             <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center">
-              <BsCheck2All />
+              <AiOutlineCheck />
             </div>
             <div className="ml-1">
               {account.substring(0, 4)}...
@@ -74,7 +74,7 @@ const Header = ({ account, setAccount }) => {
             onClick={onClickAccount}
           >
             <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center">
-              <MdOutlineWallet />
+              <FaGoogleWallet />
             </div>
             <div className="ml-1">Connect</div>
           </button>
