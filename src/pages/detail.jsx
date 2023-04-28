@@ -32,10 +32,10 @@ const Detail = () => {
         <>
           <div className="max-w-[512px]">
             <img className="rounded-t-2xl" src={metadata.image} alt="NFT" />
-            <ul className="grid grid-cols-4 gap-8 py-8 bg-gray-600 rounded-b-2xl text-center">
+            <ul className="grid grid-cols-3 gap-8 py-8 bg-gray-600  rounded-b-2xl text-center justify-items-center">
               {metadata.attributes.map((v, i) => {
                 return (
-                  <li key={i} className="mx-4">
+                  <li key={i} className="mx-4 ">
                     <div>{v.trait_type}</div>
                     <div className="mt-1 border-t-2 font-bold">{v.value}</div>
                   </li>
